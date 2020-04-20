@@ -1,0 +1,12 @@
+[
+	{
+	  "pollName"  :"How do you commute to work?",
+	  "pollType"  :	"s",
+	  "optionType"  : "s"
+	  "options"   : [{"optionName": "car", "optionValue":"ca" },
+					 {"optionName": "bus", "optionValue":"bu" },
+					 {"optionName": "bike", "optionValue":"bi" },
+					 {"optionName": "train", "optionValue":"tr" },
+					]
+	 }
+]
