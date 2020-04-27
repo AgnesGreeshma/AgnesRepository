@@ -15,13 +15,16 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.stereotype.Component;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
+@Component
 @Entity
 @Table(name="POLLING_OPTION")
 
@@ -31,7 +34,7 @@ public class OptionDetail {
 	@Id
 	@Column(name="OptionId")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int optionId;
+	private Long optionId;
 	
 	@Column(name="OptionName")
 	private String optionName;
@@ -43,15 +46,14 @@ public class OptionDetail {
 	private String valueType;
 	
 	@Column(name="PollingID")
-	private int pollingID;
+	private Long pollingID;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "UserID", referencedColumnName = "UserID")
-	private PollingUser pollingUser;
+	@Column(name="UserID")
+	private Long pollingUser;
 	
-	@Temporal(TemporalType.DATE)
-	@Column(name="CreatedTime")
-	private Date createdTime;
+	@Column(name="LastUpdatedTime")
+	@CreationTimestamp
+	private Date lastUpdatedTime;
 
 	
 }

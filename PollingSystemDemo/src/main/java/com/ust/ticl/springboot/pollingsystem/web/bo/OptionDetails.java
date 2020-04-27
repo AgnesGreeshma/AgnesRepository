@@ -17,4 +17,6 @@ public class OptionDetails extends BaseRequest {
 	private String optionId;
 	private String optionName;
 	private String optionValue;
+	private String valueType;
+	private String pollId;
 }

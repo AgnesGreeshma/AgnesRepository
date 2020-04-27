@@ -1,6 +1,6 @@
 package com.ust.ticl.springboot.pollingsystem.web.model;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -16,6 +16,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.stereotype.Component;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,7 +30,7 @@ import lombok.ToString;
  * @use    : Polling Master 
  *
  */
-
+@Component
 @Entity 
 @Table(name="POLLING_MASTER")
 
@@ -37,7 +40,7 @@ public class PollingDetail {
 	@Id
 	@Column(name="PollingID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int pollId;
+	private Long pollId;
 	
 	@Column(name="PollingName")
 	private String pollName;
@@ -47,22 +50,20 @@ public class PollingDetail {
 	
 	@Column(name="OptionType")
 	private String optionType;
+
+	@Column(name="LastUpdatedTime")
+	@CreationTimestamp
+	private Date lastUpdatedTime;
 	
-	@Temporal(TemporalType.DATE)
-	@Column(name="CreatedDate")
-	private Date createdDate;
-	
-	@Temporal(TemporalType.DATE)
 	@Column(name="FromDate")
 	private Date fromDate;
 	
-	@Temporal(TemporalType.DATE)
+	
 	@Column(name="ToDate")
 	private Date toDate;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "UserID", referencedColumnName = "UserID")
-	private PollingUser pollingUser;
+
+	@Column(name="UserID")
+	private Long pollingUser;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "PollingID", referencedColumnName = "PollingID")

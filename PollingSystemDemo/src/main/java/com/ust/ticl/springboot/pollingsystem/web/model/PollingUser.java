@@ -7,12 +7,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+@Component
 @Entity
 @Table(name="POLLING_USER")
 
@@ -22,7 +25,7 @@ public class PollingUser {
 	@Id
 	@Column(name="UserID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int userId;
+	private Long userId;
 	
 	@Column(name="UserName")
 	private String userName;
